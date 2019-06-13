@@ -1,4 +1,4 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, h, Element, Listen, Host } from '@stencil/core';
 
 @Component({
   tag: 'app-home',
@@ -6,6 +6,18 @@ import { Component, h, Host } from '@stencil/core';
   shadow: true
 })
 export class AppHome {
+
+  @Element() host: HTMLAppHomeElement;
+
+  @Listen('click')
+  onClick() {
+    console.log('app-home - clicked');
+  }
+
+  @Listen('scroll')
+  onScroll() {
+    console.log('app-home - scrolled');
+  }
 
   render() {
     return (
@@ -17,7 +29,7 @@ export class AppHome {
             web components using Stencil!
             Check out our docs on <a href='https://stenciljs.com'>stenciljs.com</a> to get started.
           </p>
-        </div>
+        </div>,
         <app-scroll-listener></app-scroll-listener>
       </Host>
     );
